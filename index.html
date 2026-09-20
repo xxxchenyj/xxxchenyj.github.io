@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陈昱江 · 视觉设计作品集</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23111'/%3E%3Ccircle cx='32' cy='32' r='10' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@600;700;900&family=Inter:wght@300;400;500;600;700&display=swap">
+<style>
+  :root{
+    --bg:#0e0e0e;
+    --bg2:#161616;
+    --ink:#f2f0ec;
+    --muted:#8a8782;
+    --line:rgba(255,255,255,.1);
+    --accent:#c9b8a0;
+    --serif:"Noto Serif SC","Songti SC",serif;
+    --sans:"Inter","Noto Sans SC","PingFang SC",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:var(--accent);color:#000}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .container{max-width:1400px;margin:0 auto;padding:0 48px;position:relative;z-index:2}
+
+  /* 导航 */
+  nav{position:fixed;top:0;left:0;right:0;z-index:60;padding:24px 48px;display:flex;justify-content:space-between;align-items:center;mix-blend-mode:difference}
+  .logo{font-family:var(--serif);font-weight:700;font-size:18px;letter-spacing:.06em;color:#fff}
+  .logo span{font-size:11px;letter-spacing:.3em;opacity:.6;margin-left:10px;font-weight:400}
+  .nav-links{display:flex;gap:40px;font-size:12px;letter-spacing:.24em;text-transform:uppercase}
+  .nav-links a{position:relative;transition:opacity .25s}
+  .nav-links a:hover{opacity:.6}
+
+  /* Hero 全屏 */
+  .hero{min-height:100vh;display:flex;align-items:flex-end;position:relative;overflow:hidden;padding:0}
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 100%;opacity:.6;filter:brightness(.75) saturate(.9) contrast(1.05)}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,14,.85) 0%,rgba(14,14,14,.55) 45%,rgba(14,14,14,.97) 100%)}
+  .hero-side{position:absolute;right:48px;top:50%;transform:translateY(-50%);text-align:right;z-index:2}
+  .hero-side p{font-size:14px;line-height:2;letter-spacing:.06em;color:var(--muted)}
+  .hero-bottom{position:relative;z-index:2;padding:0 48px 80px;width:100%}
+  .hero-bottom .eyebrow{font-size:12px;letter-spacing:.4em;color:var(--accent);text-transform:uppercase;margin-bottom:24px}
+  .hero-bottom h1{font-size:clamp(40px,7vw,96px);line-height:1.05;font-weight:300;letter-spacing:-.01em}
+  .hero-bottom h1 b{font-weight:700}
+  .hero-bottom .role{margin-top:24px;font-size:14px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+
+  /* 作品区 */
+  .works{padding:160px 0;position:relative}
+  .section-head{margin-bottom:80px;display:flex;justify-content:space-between;align-items:flex-end}
+  .section-head h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,4vw,48px)}
+  .section-head .count{font-size:13px;color:var(--muted);letter-spacing:.2em}
+  .work-list{display:flex;flex-direction:column;gap:0}
+  .card{display:block;position:relative;border-top:1px solid var(--line);padding:48px 0;transition:background .4s}
+  .card:last-child{border-bottom:1px solid var(--line)}
+  .card:hover{background:var(--bg2)}
+  .card-inner{display:grid;grid-template-columns:80px 1fr 1.4fr;gap:40px;align-items:center}
+  .card-num{font-size:13px;color:var(--muted);letter-spacing:.1em}
+  .card-info .card-title{font-family:var(--serif);font-weight:700;font-size:clamp(20px,2.4vw,30px);line-height:1.2;margin-bottom:10px;transition:color .3s}
+  .card:hover .card-title{color:var(--accent)}
+  .card-info .card-cat{font-size:12px;color:var(--muted);letter-spacing:.16em;text-transform:uppercase}
+  .card-thumb{position:relative;overflow:hidden;aspect-ratio:16/9}
+  .card-thumb img,.card-thumb video.vid-cover{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,.9,.3,1)}
+  .card:hover .card-thumb img,.card:hover .card-thumb video.vid-cover{transform:scale(1.05)}
+  .play-tag{position:absolute;top:16px;right:16px;font-size:10px;letter-spacing:.16em;background:rgba(0,0,0,.7);color:#fff;padding:6px 12px;border-radius:999px;text-transform:uppercase}
+
+  /* 关于 */
+  .about{padding:160px 0;border-top:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px}
+  .about h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,4vw,48px);margin-bottom:30px}
+  .about .bio{color:var(--muted);font-size:15px;max-width:32em;line-height:2}
+  .about .bio p+p{margin-top:18px}
+  .about .bio strong{color:var(--ink);font-weight:500}
+  .exp-label{font-size:13px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:30px}
+  .tl-row{padding:24px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:120px 1fr;gap:20px}
+  .tl-row:first-of-type{border-top:1px solid var(--line)}
+  .tl-time{font-size:12px;color:var(--muted);letter-spacing:.1em;padding-top:4px}
+  .tl-title{font-family:var(--serif);font-weight:700;font-size:17px}
+  .tl-desc{font-size:13px;color:var(--muted);margin-top:4px}
+  .skills{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:44px}
+  .skill{font-size:13px;color:var(--muted);letter-spacing:.06em}
+  .skill::before{content:"/";color:var(--accent);margin-right:8px}
+
+  /* 联系 */
+  .contact{padding:200px 0 120px;border-top:1px solid var(--line);text-align:center}
+  .contact .ty-en{font-size:clamp(48px,9vw,120px);font-weight:200;line-height:1;letter-spacing:-.01em;display:block}
+  .contact .ty-cn{font-family:var(--serif);font-size:clamp(18px,2.5vw,28px);color:var(--accent);margin-top:24px;letter-spacing:.3em;display:block}
+  .contact-links{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin:60px 0 40px}
+  .contact-links .mail{font-family:var(--serif);font-weight:700;font-size:clamp(16px,2vw,22px);border-bottom:1px solid var(--line);padding-bottom:6px;transition:border-color .25s}
+  .contact-links .mail:hover{border-bottom-color:var(--accent)}
+  .socials{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .socials .s{font-size:12px;color:var(--muted);letter-spacing:.12em;border:1px solid var(--line);border-radius:999px;padding:10px 22px;transition:all .25s}
+  .socials .s:hover{border-color:var(--accent);color:var(--accent)}
+  footer{padding:40px 0;text-align:center;font-size:11px;color:var(--muted);letter-spacing:.16em;border-top:1px solid var(--line)}
+
+  /* 详情页 */
+  .detail{padding:160px 0 100px}
+  .back-link{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;background:none;border:none;font-family:var(--sans);transition:color .25s}
+  .back-link:hover{color:var(--accent)}
+  .detail-head{margin:50px 0 40px}
+  .detail-head .detail-num{font-size:12px;color:var(--accent);letter-spacing:.2em;margin-bottom:14px;display:block}
+  .detail-head h1{font-family:var(--serif);font-weight:700;font-size:clamp(30px,4.4vw,54px);line-height:1.1;margin-bottom:18px}
+  .detail-meta{display:flex;gap:28px;flex-wrap:wrap;color:var(--muted);font-size:13px;letter-spacing:.08em}
+  .detail-meta span b{color:var(--accent);font-weight:500}
+  .video-stage{position:relative;overflow:hidden;background:#000;aspect-ratio:16/9;margin-bottom:56px}
+  .video-stage.wide{aspect-ratio:2658/1080}
+  .video-stage img{width:100%;height:100%;object-fit:cover}
+  .play-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4;transition:transform .35s,box-shadow .35s;border:none;box-shadow:0 14px 40px rgba(0,0,0,.5)}
+  .play-badge:hover{transform:translate(-50%,-50%) scale(1.1)}
+  .play-badge svg{width:26px;height:26px;fill:#000;margin-left:3px}
+  .video-stage video{width:100%;height:auto;display:block;background:#000}
+  .detail-gallery{display:grid;grid-template-columns:1fr;gap:32px;margin:6px 0 56px}
+  .detail-gallery figure{margin:0;overflow:hidden;background:var(--bg2)}
+  .detail-gallery img{width:100%;height:auto;object-fit:contain;display:block;transition:transform .8s}
+  .detail-gallery figure:hover img{transform:scale(1.02)}
+  .demo-note{display:none;margin:-40px 0 56px;padding:22px 26px;border:1px dashed var(--line);font-size:14px;color:var(--muted);line-height:1.9}
+  .demo-note code{background:var(--bg2);padding:2px 7px;border-radius:6px;font-size:12.5px;color:var(--accent)}
+  .detail-body{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;margin-bottom:60px}
+  .detail-body h3{font-family:var(--serif);font-weight:700;font-size:18px;margin-bottom:18px;letter-spacing:.04em}
+  .detail-body p{color:var(--muted);font-size:14.5px;line-height:1.9}
+  .detail-body p+p{margin-top:14px}
+  .tools{display:flex;flex-wrap:wrap;gap:8px 24px}
+  .tools span{font-size:13px;color:var(--ink);letter-spacing:.04em}
+  .tools span::before{content:"/";color:var(--accent);margin-right:8px}
+  .pager{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line);padding-top:32px;margin-top:14px}
+  .pager button{background:none;border:none;color:var(--ink);padding:13px 0;font-family:var(--serif);font-size:16px;cursor:pointer;transition:color .25s;text-align:left}
+  .pager button:hover{color:var(--accent)}
+  .pager .pg-right{text-align:right}
+  .pager .arr{color:var(--accent);margin:0 8px}
+
+  .view{display:none}
+  .view.active{display:block;animation:fadeIn .5s ease}
+  .p-block{display:none}
+  .p-block.active{display:block;animation:fadeIn .5s ease}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .rv{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.22,.9,.3,1),transform 1s cubic-bezier(.22,.9,.3,1)}
+  .rv.in{opacity:1;transform:none}
+  .rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}
+
+  @media (max-width:1024px){
+    .about-grid{grid-template-columns:1fr;gap:56px}
+    .detail-body{grid-template-columns:1fr;gap:40px}
+    .card-inner{grid-template-columns:1fr;gap:20px}
+    .card-num{display:none}
+    .hero-side{display:none}
+  }
+  @media (max-width:640px){
+    .container{padding:0 20px}
+    nav{padding:20px}
+    .nav-links{gap:18px;font-size:11px}
+    .hero-bottom{padding:0 20px 60px}
+    .works{padding:100px 0}
+    .about{padding:100px 0}
+    .contact{padding:120px 0 80px}
+    .contact-links{flex-direction:column;gap:20px}
+    .tl-row{grid-template-columns:1fr;gap:4px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .rv{opacity:1;transform:none;transition:none}
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="logo" href="#/">陈昱江<span>STUDIO</span></a>
+  <div class="nav-links">
+    <a href="#works">作品</a>
+    <a href="#about">关于</a>
+    <a href="#contact">联系</a>
+  </div>
+</nav>
+
+<main id="view-home" class="view active">
+
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="assets/portrait-3.jpg" alt="陈昱江">
+    </div>
+    <div class="hero-side">
+      <p>视觉设计师<br>Visual Designer<br><br>品牌 / 动效 / 3D<br>AIGC / 短片</p>
+    </div>
+    <div class="hero-bottom">
+      <p class="eyebrow">Portfolio — 2026</p>
+      <h1><p>作品集</p></h1>
+      <p class="role">陈昱江 · Visual Design</p>
+    </div>
+  </section>
+
+  <section class="works" id="works">
+    <div class="container">
+      <div class="section-head rv">
+        <h2>精选作品</h2>
+        <span class="count">— 05 Projects</span>
+      </div>
+      <div class="work-list">
+
+        <a class="card rv" href="#/project/0">
+          <div class="card-inner">
+            <span class="card-num">01</span>
+            <div class="card-info">
+              <div class="card-title">电商裸眼 3D · 交互视觉</div>
+              <div class="card-cat">电商视觉 · 2026</div>
+            </div>
+            <div class="card-thumb">
+              <img src="assets/poster-0.jpg" alt="电商裸眼 3D">
+              <span class="play-tag">Video</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="card rv d1" href="#/project/1">
+          <div class="card-inner">
+            <span class="card-num">02</span>
+            <div class="card-info">
+              <div class="card-title">三维制作 · 全流程短片</div>
+              <div class="card-cat">动效设计 · 2026</div>
+            </div>
+            <div class="card-thumb">
+              <img src="assets/poster-1.jpg" alt="三维制作">
+              <span class="play-tag">Video</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="card rv d2" href="#/project/2">
+          <div class="card-inner">
+            <span class="card-num">03</span>
+            <div class="card-info">
+              <div class="card-title">巨幕裸眼 3D · 案例</div>
+              <div class="card-cat">裸眼3D · 2021</div>
+            </div>
+            <div class="card-thumb">
+              <img src="assets/poster-2.jpg" alt="巨幕裸眼 3D">
+              <span class="play-tag">Video</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="card rv" href="#/project/3">
+          <div class="card-inner">
+            <span class="card-num">04</span>
+            <div class="card-info">
+              <div class="card-title">AIGC 视觉 · 制作</div>
+              <div class="card-cat">AI应用 · 2026</div>
+            </div>
+            <div class="card-thumb">
+              <img src="assets/poster-3.jpg" alt="AIGC">
+              <span class="play-tag">Video</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="card rv d1" href="#/project/4">
+          <div class="card-inner">
+            <span class="card-num">05</span>
+            <div class="card-info">
+              <div class="card-title">地产视觉 · 综合案例</div>
+              <div class="card-cat">视频广告 · 2022</div>
+            </div>
+            <div class="card-thumb">
+              <img src="assets/poster-4.jpg" alt="地产视觉 · 综合案例">
+              <span class="play-tag">Video</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div class="about-left">
+        <h2 class="rv">关于我</h2>
+        <div class="bio rv d1">
+          <p>我是一名<strong>视觉设计师</strong>，工作在品牌、界面与动态影像的交界处。相信好的设计先解决问题，再谈风格——让信息被看见，让情绪被记住。</p>
+          <p>过去五年服务消费、科技、地产、文创领域客户，独立完成从视觉执行、三维创作到动态成片的全流程，涵盖裸眼巨幕与 AI 视觉项目。</p>
+        </div>
+      </div>
+      <div class="about-right rv d1">
+        <div class="exp-label">Work Experience</div>
+        <div class="tl-row"><div class="tl-time">2026 — 2024</div><div><div class="tl-title">重庆冠美 · 三维设计师</div><div class="tl-desc">品牌视觉、动态短片与 AIGC</div></div></div>
+        <div class="tl-row"><div class="tl-time">2023</div><div><div class="tl-title">重庆亿链纵横 · 视觉设计师</div><div class="tl-desc">官网视觉搭建，三维画面创作</div></div></div>
+        <div class="tl-row"><div class="tl-time">2023 — 2022</div><div><div class="tl-title">重庆及时沟通 · 三维设计师</div><div class="tl-desc">地产三维渲染、营销视觉设计</div></div></div>
+        <div class="tl-row"><div class="tl-time">2022 — 2021</div><div><div class="tl-title">重庆东方初晓 · 巨幕视觉设计</div><div class="tl-desc">观音桥户外裸眼 3D 巨幕视觉制作</div></div></div>
+        <div class="skills">
+          <span class="skill">After Effects</span><span class="skill">C4D</span><span class="skill">Photoshop</span>
+          <span class="skill">Illustrator</span><span class="skill">Premiere</span><span class="skill">可灵</span><span class="skill">即梦</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <span class="ty-en rv">Thank you</span>
+      <span class="ty-cn rv d1">感谢观看</span>
+      <div class="contact-links rv d2">
+        <a class="mail" href="tel:13163718505">13163718505</a>
+        <a class="mail" href="mailto:850562747@qq.com">850562747@qq.com</a>
+      </div>
+      <div class="socials rv d2">
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<main id="view-project" class="view">
+  <div class="container detail">
+    <button class="back-link" id="back-btn">← 返回作品</button>
+
+    <section class="p-block" data-p="0">
+      <div class="detail-head">
+        <span class="detail-num">01</span>
+        <h1>电商裸眼 3D · 交互视觉</h1>
+        <div class="detail-meta"><span><b>类型</b> 品牌设计</span><span><b>年份</b> 2025</span><span><b>角色</b> 主视觉 / 动效</span></div>
+      </div>
+      <div class="video-stage">
+        <img src="assets/poster-0.jpg" alt="电商裸眼 3D">
+        <button class="play-badge" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+      </div>
+      <div class="demo-note"></div>
+      <div class="detail-body">
+        <div><h3>项目简介</h3><p>针对电商营销场景定制裸眼 3D 交互视觉短片，依托三维渲染与动态特效打造强冲击力立体画面，放大产品视觉卖点。</p><p>独立完成视觉策划、三维建模、动态渲染及后期合成，交付适配线上传播的完整成片。</p></div>
+        <div><h3>使用工具</h3><div class="tools"><span>C4D</span><span>Octane Render</span><span>After Effects</span><span>Photoshop</span></div></div>
+      </div>
+    </section>
+
+    <section class="p-block" data-p="1">
+      <div class="detail-head">
+        <span class="detail-num">02</span>
+        <h1>三维制作 · 全流程短片</h1>
+        <div class="detail-meta"><span><b>类型</b> 动效设计</span><span><b>年份</b> 2025</span><span><b>角色</b> 创意 / 动效</span></div>
+      </div>
+      <div class="video-stage">
+        <img src="assets/poster-1.jpg" alt="三维制作">
+        <button class="play-badge" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+      </div>
+      <div class="demo-note"></div>
+      <div class="detail-body">
+        <div><h3>项目简介</h3><p>为品牌打造宣传三维动态短片，通过三维视觉语言传递品牌气质，塑造统一的品牌视觉形象，适配官网、品牌宣传等场景。独立完成视觉设定、三维渲染、动效设计与成片输出。</p></div>
+        <div><h3>使用工具</h3><div class="tools"><span>After Effects</span><span>C4D</span><span>Octane Render</span></div></div>
+      </div>
+    </section>
+
+    <section class="p-block" data-p="2">
+      <div class="detail-head">
+        <span class="detail-num">03</span>
+        <h1>巨幕裸眼 3D · 案例</h1>
+        <div class="detail-meta"><span><b>类型</b> 界面设计</span><span><b>年份</b> 2021</span><span><b>角色</b> UI / 交互</span></div>
+      </div>
+      <div class="video-stage">
+        <img src="assets/poster-2.jpg" alt="巨幕裸眼 3D">
+        <button class="play-badge" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+      </div>
+      <div class="demo-note"></div>
+      <div class="detail-body">
+        <div><h3>项目简介</h3><p>为商业综合体打造户外裸眼 3D 巨幕视觉内容，依托三维动态设计，利用屏幕空间打造沉浸式立体视觉效果，适配商圈大尺度户外传播场景。独立完成视觉策划、三维动画制作与成片调色合成。</p></div>
+        <div><h3>使用工具</h3><div class="tools"><span>C4D</span><span>Octane Render</span><span>After Effects</span><span>Photoshop</span></div></div>
+      </div>
+    </section>
+
+    <section class="p-block" data-p="3">
+      <div class="detail-head">
+        <span class="detail-num">04</span>
+        <h1>AIGC 视觉 · 制作</h1>
+        <div class="detail-meta"><span><b>类型</b> 三维渲染</span><span><b>年份</b> 2024</span><span><b>角色</b> 建模 / 渲染</span></div>
+      </div>
+      <div class="video-stage">
+        <img src="assets/poster-3.jpg" alt="AIGC">
+        <button class="play-badge" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+      </div>
+      <div class="demo-note"></div>
+      <div class="detail-body">
+        <div><h3>项目简介</h3><p>以 AI 作为视觉辅助工具开展动态影像实验，结合人工审美把控画面构图、光影与叙事逻辑，拓展视觉表达可能性，产出系列创意动态短片。独立完成画面定向迭代、素材整合与后期成片包装。</p></div>
+        <div><h3>使用工具</h3><div class="tools"><span>可灵</span><span>即梦</span><span>Photoshop</span><span>After Effects</span></div></div>
+      </div>
+    </section>
+
+    <section class="p-block" data-p="4">
+      <div class="detail-head">
+        <span class="detail-num">05</span>
+        <h1>地产视觉 · 综合案例</h1>
+        <div class="detail-meta"><span><b>类型</b> 视频广告</span><span><b>年份</b> 2022</span><span><b>广告</b> 制作 / 后期</span></div>
+      </div>
+      <div class="video-stage wide">
+        <img src="assets/poster-5.jpg" alt="地产视觉">
+        <button class="play-badge" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+      </div>
+      <div class="demo-note"></div>
+      <div class="detail-gallery rv">
+        <figure><img src="assets/estate-1.jpg" alt="地产作品 1"></figure>
+        <figure><img src="assets/estate-2.jpg" alt="地产作品 2"></figure>
+        <figure><img src="assets/estate-3.jpg" alt="地产作品 3"></figure>
+        <figure><img src="assets/estate-4.jpg" alt="地产作品 4"></figure>
+      </div>
+      <div class="detail-body">
+        <div><h3>项目简介</h3><p>地产营销三维视觉项目，通过三维渲染与动态镜头设计，还原空间形态与场景氛围，用于项目宣传推介。独立负责场景搭建、材质灯光、动态镜头及后期包装，输出系列静态效果图与宣传短片。</p></div>
+        <div><h3>使用工具</h3><div class="tools"><span>C4D</span><span>Octane Render</span><span>After Effects</span></div></div>
+      </div>
+    </section>
+
+    <div class="pager">
+      <button id="prev-btn"><span class="arr">←</span>上一个项目</button>
+      <button id="next-btn">下一个项目<span class="arr">→</span></button>
+    </div>
+  </div>
+</main>
+
+<script>
+var CONFIG = {
+  projects: [
+    { video:"assets/电商弹窗裸眼3D.mp4", vimeoId:"" },
+    { video:"assets/三维视频制作过程.mp4", vimeoId:"" },
+    { video:"assets/巨幕裸眼3D.mp4", vimeoId:"" },
+    { video:"assets/AICG.mp4", vimeoId:"" },
+    { video:"assets/地产广告.mp4", vimeoId:"" }
+  ]
+};
+var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function playAt(stage, cfg, noteEl){
+  var badge = stage.querySelector(".play-badge");
+  var poster = stage.querySelector("img");
+  if(badge) badge.style.display = "none";
+  if(cfg.video){
+    poster.style.display = "none";
+    var v = document.createElement("video");
+    v.src = cfg.video; v.controls = true; v.autoplay = true; v.playsInline = true;
+    v.style.cssText = "width:100%;height:auto;display:block;background:#000";
+    v.addEventListener("loadedmetadata", function(){
+      if(v.videoHeight > v.videoWidth){
+        v.style.maxWidth = "420px"; v.style.margin = "0 auto";
+        stage.style.maxWidth = "420px"; stage.style.marginLeft = "auto"; stage.style.marginRight = "auto";
+      } else {
+        stage.style.maxWidth = ""; stage.style.marginLeft = ""; stage.style.marginRight = "";
+      }
+      stage.style.aspectRatio = v.videoWidth + " / " + v.videoHeight;
+    });
+    stage.appendChild(v); stage.style.aspectRatio = "auto";
+  } else {
+    poster.style.display = "none";
+    noteEl.style.display = "block";
+    noteEl.innerHTML = "把视频放进 assets 并在 CONFIG 填好文件名。";
+  }
+}
+function resetStage(stage){
+  var v = stage.querySelector("video"); if(v) v.remove();
+  var badge = stage.querySelector(".play-badge");
+  var poster = stage.querySelector("img");
+  var note = stage.querySelector(".demo-note");
+  if(badge) badge.style.display = "";
+  if(poster) poster.style.display = "";
+  if(note) note.style.display = "none";
+  stage.style.aspectRatio = ""; stage.style.maxWidth = "";
+  stage.style.marginLeft = ""; stage.style.marginRight = "";
+}
+function parseHash(){
+  var h = location.hash || "#/";
+  var m = h.match(/^#\/project\/(\d+)$/);
+  if(m) return {view:"project", idx:parseInt(m[1],10)};
+  if(h==="#works"||h==="#about"||h==="#contact") return {view:"home", anchor:h.slice(1)};
+  return {view:"home", anchor:null};
+}
+function stopAllVideos(){
+  document.querySelectorAll("#view-project .video-stage video").forEach(function(v){
+    v.pause(); v.src = ""; v.remove();
+  });
+  document.querySelectorAll("#view-project .video-stage").forEach(function(st){
+    st.style.aspectRatio=""; st.style.maxWidth="";
+    st.style.marginLeft=""; st.style.marginRight="";
+    var b=st.querySelector(".play-badge"); if(b) b.style.display="";
+    var im=st.querySelector("img"); if(im) im.style.display="";
+  });
+}
+function render(){
+  stopAllVideos();
+  var s = parseHash();
+  var home = document.getElementById("view-home"), proj = document.getElementById("view-project");
+  if(s.view==="project"){
+    home.classList.remove("active"); proj.classList.add("active");
+    var blocks = proj.querySelectorAll(".p-block");
+    for(var i=0;i<blocks.length;i++){
+      blocks[i].classList.toggle("active", i===s.idx);
+      if(i===s.idx) resetStage(blocks[i].querySelector(".video-stage"));
+    }
+    window.scrollTo(0,0);
+  } else {
+    proj.classList.remove("active"); home.classList.add("active");
+    if(s.anchor){ setTimeout(function(){ var el=document.getElementById(s.anchor); if(el) el.scrollIntoView({behavior:reduceMotion?"auto":"smooth"}); },60); }
+    else { window.scrollTo(0,0); }
+  }
+}
+document.querySelectorAll("#view-project .video-stage .play-badge").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    var block = btn.closest(".p-block"), idx = parseInt(block.getAttribute("data-p"),10);
+    playAt(block.querySelector(".video-stage"), CONFIG.projects[idx], block.querySelector(".demo-note"));
+  });
+});
+function curIdx(){ var s=parseHash(); return s.view==="project"?s.idx:0; }
+document.getElementById("prev-btn").addEventListener("click", function(){ location.hash = "#/project/"+((curIdx()-1+5)%5); });
+document.getElementById("next-btn").addEventListener("click", function(){ location.hash = "#/project/"+((curIdx()+1)%5); });
+document.getElementById("back-btn").addEventListener("click", function(){ location.hash = "#works"; });
+
+function setupReveal(){
+  var items = document.querySelectorAll(".rv");
+  if(!reduceMotion && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); },{threshold:.12});
+    items.forEach(function(el){ io.observe(el); });
+  } else { items.forEach(function(el){ el.classList.add("in"); }); }
+}
+setupReveal();
+window.addEventListener("hashchange", render);
+render();
+</script>
+</body>
+</html>
