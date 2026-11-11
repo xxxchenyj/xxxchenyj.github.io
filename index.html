@@ -110,6 +110,7 @@
   .play-badge:hover{transform:translate(-50%,-50%) scale(1.1)}
   .play-badge svg{width:26px;height:26px;fill:#000;margin-left:3px}
   .video-stage video{width:100%;height:auto;display:block;background:#000}
+  .video-stage iframe{width:100%;height:100%;display:block;background:#000;border:0}
   .detail-gallery{display:grid;grid-template-columns:1fr;gap:32px;margin:6px 0 56px}
   .detail-gallery figure{margin:0;overflow:hidden;background:var(--bg2)}
   .detail-gallery img{width:100%;height:auto;object-fit:contain;display:block;transition:transform .8s}
@@ -128,6 +129,13 @@
   .pager button:hover{color:var(--accent)}
   .pager .pg-right{text-align:right}
   .pager .arr{color:var(--accent);margin:0 8px}
+
+  /* AIGC 多视频整合模块 */
+  .ai-list{margin-bottom:56px}
+  .ai-item{margin-bottom:48px}
+  .ai-item:last-child{margin-bottom:0}
+  .ai-item-title{font-family:var(--serif);font-weight:700;font-size:16px;letter-spacing:.04em;margin:0 0 16px}
+  .ai-item .video-stage{margin-bottom:0}
 
   .view{display:none}
   .view.active{display:block;animation:fadeIn .5s ease}
@@ -202,11 +210,11 @@
           <div class="card-inner">
             <span class="card-num">01</span>
             <div class="card-info">
-              <div class="card-title">电商裸眼 3D · 交互视觉</div>
-              <div class="card-cat">电商视觉 · 2026</div>
+              <div class="card-title">AIGC 视觉 · 制作</div>
+              <div class="card-cat">AI应用 · 2026</div>
             </div>
             <div class="card-thumb">
-              <img src="assets/poster-0.jpg" alt="电商裸眼 3D">
+              <img src="assets/poster-3.jpg" alt="AIGC">
               <span class="play-tag">Video</span>
             </div>
           </div>
@@ -215,6 +223,20 @@
         <a class="card rv d1" href="#/project/1">
           <div class="card-inner">
             <span class="card-num">02</span>
+            <div class="card-info">
+              <div class="card-title">电商弹窗裸眼 3D · 交互视觉</div>
+              <div class="card-cat">电商视觉 · 2026</div>
+            </div>
+            <div class="card-thumb">
+              <img src="assets/poster-0.jpg" alt="电商弹窗裸眼 3D">
+              <span class="play-tag">Video</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="card rv d2" href="#/project/2">
+          <div class="card-inner">
+            <span class="card-num">03</span>
             <div class="card-info">
               <div class="card-title">三维制作 · 全流程短片</div>
               <div class="card-cat">动效设计 · 2026</div>
@@ -226,29 +248,15 @@
           </div>
         </a>
 
-        <a class="card rv d2" href="#/project/2">
+        <a class="card rv" href="#/project/3">
           <div class="card-inner">
-            <span class="card-num">03</span>
+            <span class="card-num">04</span>
             <div class="card-info">
               <div class="card-title">巨幕裸眼 3D · 案例</div>
               <div class="card-cat">裸眼3D · 2021</div>
             </div>
             <div class="card-thumb">
               <img src="assets/poster-2.jpg" alt="巨幕裸眼 3D">
-              <span class="play-tag">Video</span>
-            </div>
-          </div>
-        </a>
-
-        <a class="card rv" href="#/project/3">
-          <div class="card-inner">
-            <span class="card-num">04</span>
-            <div class="card-info">
-              <div class="card-title">AIGC 视觉 · 制作</div>
-              <div class="card-cat">AI应用 · 2026</div>
-            </div>
-            <div class="card-thumb">
-              <img src="assets/poster-3.jpg" alt="AIGC">
               <span class="play-tag">Video</span>
             </div>
           </div>
@@ -317,11 +325,44 @@
     <section class="p-block" data-p="0">
       <div class="detail-head">
         <span class="detail-num">01</span>
-        <h1>电商裸眼 3D · 交互视觉</h1>
+        <h1>AIGC 视觉 · 制作</h1>
+        <div class="detail-meta"><span><b>类型</b> AI应用</span><span><b>年份</b> 2026</span><span><b>角色</b> AI视觉 / 后期</span></div>
+      </div>
+      <div class="ai-list">
+        <div class="ai-item">
+          <div class="ai-item-title">AI 圣诞产品 · 视觉短片</div>
+          <div class="video-stage">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117592765242266&bvid=BV1yvWg6aEvu&cid=43495000640&p=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="ai-item">
+          <div class="ai-item-title">AI 产品主页 · 视觉演示</div>
+          <div class="video-stage">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117592765437683&bvid=BV11vWg6YE51&cid=43495064713&p=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <div class="ai-item">
+          <div class="ai-item-title">AI 小短剧 · 创意短片</div>
+          <div class="video-stage">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117592765241314&bvid=BV1yvWg6aEX6&cid=43495001820&p=1&danmaku=0&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="demo-note"></div>
+      <div class="detail-body">
+        <div><h3>项目简介</h3><p>以 AI 作为视觉辅助工具开展动态影像实验，结合人工审美把控画面构图、光影与叙事逻辑，拓展视觉表达可能性，产出系列创意动态短片。独立完成画面定向迭代、素材整合与后期成片包装。</p></div>
+        <div><h3>使用工具</h3><div class="tools"><span>可灵</span><span>即梦</span><span>Photoshop</span><span>After Effects</span></div></div>
+      </div>
+    </section>
+
+    <section class="p-block" data-p="1">
+      <div class="detail-head">
+        <span class="detail-num">02</span>
+        <h1>电商弹窗裸眼 3D · 交互视觉</h1>
         <div class="detail-meta"><span><b>类型</b> 品牌设计</span><span><b>年份</b> 2025</span><span><b>角色</b> 主视觉 / 动效</span></div>
       </div>
       <div class="video-stage">
-        <img src="assets/poster-0.jpg" alt="电商裸眼 3D">
+        <img src="assets/poster-0.jpg" alt="电商弹窗裸眼 3D">
         <button class="play-badge" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
       </div>
       <div class="demo-note"></div>
@@ -331,9 +372,9 @@
       </div>
     </section>
 
-    <section class="p-block" data-p="1">
+    <section class="p-block" data-p="2">
       <div class="detail-head">
-        <span class="detail-num">02</span>
+        <span class="detail-num">03</span>
         <h1>三维制作 · 全流程短片</h1>
         <div class="detail-meta"><span><b>类型</b> 动效设计</span><span><b>年份</b> 2025</span><span><b>角色</b> 创意 / 动效</span></div>
       </div>
@@ -348,9 +389,9 @@
       </div>
     </section>
 
-    <section class="p-block" data-p="2">
+    <section class="p-block" data-p="3">
       <div class="detail-head">
-        <span class="detail-num">03</span>
+        <span class="detail-num">04</span>
         <h1>巨幕裸眼 3D · 案例</h1>
         <div class="detail-meta"><span><b>类型</b> 界面设计</span><span><b>年份</b> 2021</span><span><b>角色</b> UI / 交互</span></div>
       </div>
@@ -362,23 +403,6 @@
       <div class="detail-body">
         <div><h3>项目简介</h3><p>为商业综合体打造户外裸眼 3D 巨幕视觉内容，依托三维动态设计，利用屏幕空间打造沉浸式立体视觉效果，适配商圈大尺度户外传播场景。独立完成视觉策划、三维动画制作与成片调色合成。</p></div>
         <div><h3>使用工具</h3><div class="tools"><span>C4D</span><span>Octane Render</span><span>After Effects</span><span>Photoshop</span></div></div>
-      </div>
-    </section>
-
-    <section class="p-block" data-p="3">
-      <div class="detail-head">
-        <span class="detail-num">04</span>
-        <h1>AIGC 视觉 · 制作</h1>
-        <div class="detail-meta"><span><b>类型</b> 三维渲染</span><span><b>年份</b> 2024</span><span><b>角色</b> 建模 / 渲染</span></div>
-      </div>
-      <div class="video-stage">
-        <img src="assets/poster-3.jpg" alt="AIGC">
-        <button class="play-badge" aria-label="播放"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
-      </div>
-      <div class="demo-note"></div>
-      <div class="detail-body">
-        <div><h3>项目简介</h3><p>以 AI 作为视觉辅助工具开展动态影像实验，结合人工审美把控画面构图、光影与叙事逻辑，拓展视觉表达可能性，产出系列创意动态短片。独立完成画面定向迭代、素材整合与后期成片包装。</p></div>
-        <div><h3>使用工具</h3><div class="tools"><span>可灵</span><span>即梦</span><span>Photoshop</span><span>After Effects</span></div></div>
       </div>
     </section>
 
@@ -415,11 +439,11 @@
 <script>
 var CONFIG = {
   projects: [
-    { video:"assets/电商弹窗裸眼3D.mp4", vimeoId:"" },
-    { video:"assets/三维视频制作过程.mp4", vimeoId:"" },
-    { video:"assets/巨幕裸眼3D.mp4", vimeoId:"" },
-    { video:"assets/AICG.mp4", vimeoId:"" },
-    { video:"assets/地产广告.mp4", vimeoId:"" }
+    { bili:"", video:"" }, // 01 AIGC（三个视频已在页面内静态嵌入 iframe）
+    { bili:"//player.bilibili.com/player.html?isOutside=true&aid=117592765307463&bvid=BV1NvWg6YEc5&cid=43494999618&p=1&danmaku=0&autoplay=0" }, // 02 电商弹窗裸眼3D
+    { bili:"//player.bilibili.com/player.html?isOutside=true&aid=117592748593627&bvid=BV1sqWg6wELC&cid=43494935525&p=1&danmaku=0&autoplay=0" }, // 03 三维视频制作过程
+    { bili:"//player.bilibili.com/player.html?isOutside=true&aid=117592765241431&bvid=BV1yvWg6aEpG&cid=43494999994&p=1&danmaku=0&autoplay=0" }, // 04 巨幕裸眼3D
+    { video:"assets/地产广告.mp4", bili:"" } // 05 地产视觉（本地视频）
   ]
 };
 var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -428,7 +452,19 @@ function playAt(stage, cfg, noteEl){
   var badge = stage.querySelector(".play-badge");
   var poster = stage.querySelector("img");
   if(badge) badge.style.display = "none";
-  if(cfg.video){
+  if(cfg.bili){
+    poster.style.display = "none";
+    var f = document.createElement("iframe");
+    f.className = "dyn-iframe";
+    f.src = cfg.bili;
+    f.setAttribute("scrolling","no");
+    f.setAttribute("border","0");
+    f.setAttribute("frameborder","no");
+    f.setAttribute("framespacing","0");
+    f.setAttribute("allowfullscreen","true");
+    f.style.cssText = "width:100%;height:100%;display:block;background:#000;border:0";
+    stage.appendChild(f);
+  } else if(cfg.video){
     poster.style.display = "none";
     var v = document.createElement("video");
     v.src = cfg.video; v.controls = true; v.autoplay = true; v.playsInline = true;
@@ -451,6 +487,7 @@ function playAt(stage, cfg, noteEl){
 }
 function resetStage(stage){
   var v = stage.querySelector("video"); if(v) v.remove();
+  var f = stage.querySelector("iframe.dyn-iframe"); if(f) f.remove();
   var badge = stage.querySelector(".play-badge");
   var poster = stage.querySelector("img");
   var note = stage.querySelector(".demo-note");
@@ -471,6 +508,7 @@ function stopAllVideos(){
   document.querySelectorAll("#view-project .video-stage video").forEach(function(v){
     v.pause(); v.src = ""; v.remove();
   });
+  document.querySelectorAll("#view-project .video-stage iframe.dyn-iframe").forEach(function(f){ f.remove(); });
   document.querySelectorAll("#view-project .video-stage").forEach(function(st){
     st.style.aspectRatio=""; st.style.maxWidth="";
     st.style.marginLeft=""; st.style.marginRight="";
